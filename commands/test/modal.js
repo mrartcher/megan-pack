@@ -15,7 +15,7 @@ module.exports = {
             .setPlaceholder("Enter text...")
             .setStyle(TextInputStyle.Short)
         const textInput = new ActionRowBuilder().addComponents(text);
-        modal.addComponents(firstActionRow);
+        modal.addComponents(textInput);
         await interaction.showModal(modal);
     }
 }
