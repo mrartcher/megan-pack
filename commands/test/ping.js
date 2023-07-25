@@ -9,6 +9,6 @@ module.exports = {
         .setColor(0x06D551)
         .setTitle("Pong!")
         .setDescription(`Ping: ${interaction.client.ws.ping}ms`)
-		await interaction.reply('pong');
+		await interaction.reply({embed: [embed]});
 	}
 }
