@@ -1,5 +1,5 @@
 const { ActionRowBuilder, Events, ModalBuilder, TextInputBuilder, TextInputStyle, SlashCommandBuilder } = require("discord.js");
-import client from "../../index";
+const client = require("../../index");
 
 module.exports = {
     data: new SlashCommandBuilder()
