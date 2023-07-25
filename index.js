@@ -34,6 +34,12 @@ client.on(Events.InteractionCreate, async interaction => {
 
 	if (!command) return;
 
+	if (!interaction.isModalSubmit()) return;
+
+	if (interaction.customId === 'testModal') {
+		await interaction.reply({ content: 'Your submission was received successfully!' });
+	}
+
 	try {
 		await command.execute(interaction);
 	} catch (error) {
