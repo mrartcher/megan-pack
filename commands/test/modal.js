@@ -5,6 +5,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("modal")
         .setDescription("Test modal"),
+    
     async execute(interaction) {
         const modal = new ModalBuilder()
             .setCustomId("testModal")
@@ -17,5 +18,13 @@ module.exports = {
         const textInput = new ActionRowBuilder().addComponents(text);
         modal.addComponents(textInput);
         await interaction.showModal(modal);
+
+        client.on(Events.InteractionCreate, async interaction =>{
+            if (!interaction.isModalSubmit()) return;
+            
+            if (interaction.customId === "testModal") {
+                console.log("Modal submited")
+            }
+        });
     }
 }
