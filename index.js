@@ -51,7 +51,8 @@ client.on(Events.InteractionCreate, async interaction => {
             if (!interaction.isModalSubmit()) return;
             
             if (interaction.customId === "testModal") {
-                console.log("Modal submited")
+                const text = interaction.fields.getTextInputValue('textInput')
+				await interaction.reply({ content: text })
             }
         });
 	}
