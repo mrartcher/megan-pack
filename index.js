@@ -34,10 +34,6 @@ client.on(Events.InteractionCreate, async interaction => {
 
 	if (!command) return;
 
-	if (interaction.customId === 'testModal') {
-		console.log("MODAL")
-	}
-
 	try {
 		await command.execute(interaction);
 	} catch (error) {
