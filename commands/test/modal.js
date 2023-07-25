@@ -17,12 +17,5 @@ module.exports = {
         const textInput = new ActionRowBuilder().addComponents(text);
         modal.addComponents(firstActionRow);
         await interaction.showModal(modal);
-
-        client.on(Events.InteractionCreate, async interaction => {
-            if (!interaction.isModalSubmit()) return;
-            if (interaction.customId === 'testModal') {
-                await interaction.reply({ content: 'Your submission was received successfully!' });
-            }
-        });
     }
 }
