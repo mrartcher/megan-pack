@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, ActionRowBuilder, Events, ModalBuilder, TextInputBuilder, TextInputStyle, } = require('discord.js');
 const { token } = require('./config.json');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -33,6 +33,28 @@ client.on(Events.InteractionCreate, async interaction => {
 	const command = client.commands.get(interaction.commandName);
 
 	if (!command) return;
+
+	if (interaction.commandName === "modal") {
+		const modal = new ModalBuilder()
+            .setCustomId("testModal")
+            .setTitle("Test modal")
+        const text = new TextInputBuilder()
+            .setCustomId("textTest")
+            .setLabel("Test")
+            .setPlaceholder("Enter text...")
+            .setStyle(TextInputStyle.Short)
+        const textInput = new ActionRowBuilder().addComponents(text);
+        modal.addComponents(textInput);
+        await interaction.showModal(modal);
+
+        client.on(Events.InteractionCreate, async interaction =>{
+            if (!interaction.isModalSubmit()) return;
+            
+            if (interaction.customId === "testModal") {
+                console.log("Modal submited")
+            }
+        });
+	}
 
 	try {
 		await command.execute(interaction);
