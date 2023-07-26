@@ -55,8 +55,6 @@ client.on(Events.InteractionCreate, async interaction => {
 				await interaction.reply({ content: text })
 			}
 		});
-	} else if (interaction.isButton()) {
-		console.log(interaction)
 	}
 
 	try {

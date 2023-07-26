@@ -1,4 +1,4 @@
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle, SlashCommandBuilder, PermissionFlagsBits, Embed } = require("discord.js");
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, SlashCommandBuilder, PermissionFlagsBits, Embed, Component, ComponentType } = require("discord.js");
 const { EmbedBuilder } = require("@discordjs/builders");
 
 module.exports = {
@@ -22,6 +22,15 @@ module.exports = {
         const row = new ActionRowBuilder()
             .addComponents(helper)
 
-        await interaction.reply({embeds: [embed], components: [row], ephemeral: true})
+        const reply = await interaction.reply({embeds: [embed], components: [row], ephemeral: true})
+
+        const collector = reply.createMessageComponentCollector({
+            components: ComponentType.Button,
+        })
+        collector.on('collect', (interaction) => {
+            if (interaction.customId === "helperVacancyOpen") {
+                interaction.reply({content: "1", ephemeral: true})
+            }
+        })
     }
 }
