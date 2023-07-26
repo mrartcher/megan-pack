@@ -68,5 +68,5 @@ client.on(Events.InteractionCreate, async interaction => {
 		}
 	}
 });
-module.exports = client;
+
 client.login(token);
