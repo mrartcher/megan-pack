@@ -15,7 +15,7 @@ module.exports = {
             .setDescription("Нажмите на кнопку ниже для открытия вакансии")
 
         const helper = new ButtonBuilder()
-            .setCustomId("helper-vacancy")
+            .setCustomId("helperVacancyOpen")
             .setStyle(ButtonStyle.Success)
             .setLabel("Отурыть вакансии на пост хелпера")
             

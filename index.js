@@ -57,6 +57,10 @@ client.on(Events.InteractionCreate, async interaction => {
 		});
 	}
 
+	if (interaction.isButton()) {
+		if (interaction.customId === "helperVacancyOpen"){}
+	}
+
 	try {
 		await command.execute(interaction);
 	} catch (error) {
