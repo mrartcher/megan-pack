@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require("discord.js");
+import client from "../../index";
 
 module.exports = {
     data: new SlashCommandBuilder()
