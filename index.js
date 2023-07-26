@@ -58,7 +58,9 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 
 	if (interaction.isButton()) {
-		if (interaction.customId === "helperVacancyOpen"){}
+		if (interaction.customId === "helperVacancyOpen"){
+			await interaction.reply({content: "Nelper Vacancy", ephemeral: true})
+		}
 	}
 
 	try {
