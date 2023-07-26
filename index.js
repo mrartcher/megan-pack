@@ -55,6 +55,8 @@ client.on(Events.InteractionCreate, async interaction => {
 				await interaction.reply({ content: text })
 			}
 		});
+	} else if (interaction.isButton()) {
+		console.log(interaction)
 	}
 
 	try {
@@ -66,12 +68,6 @@ client.on(Events.InteractionCreate, async interaction => {
 		} else {
 			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 		}
-	}
-	if (!interaction.isButton()) return;
-
-	if (interaction.isButton())
-	{
-		console.log(interaction)
 	}
 });
 
