@@ -46,4 +46,5 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 });
 
+client.user.setStatus('idle');
 client.login(token);
