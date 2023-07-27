@@ -3,7 +3,9 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("ping")
-        .setDescription("Pong!"),
+        .setDescription("Pong!")
+        .setDMPermission(false)
+        .setDefaultMemberPermissions(PermissionsBitField.Flags.Administrator),
     async execute(interaction) {
 
         const embed = new EmbedBuilder()
