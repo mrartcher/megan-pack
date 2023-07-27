@@ -7,7 +7,9 @@ module.exports = {
         .addUserOption(op => op
             .setName("user")
             .setDescription("User to ban")
-            .setRequired(true)),
+            .setRequired(true))
+        .setDMPermission(false)
+        .setDefaultMemberPermissions(PermissionsBitField.Flags.Administrator),
     async execute(interaction) {
         const user = interaction.options.getUser("user")
 

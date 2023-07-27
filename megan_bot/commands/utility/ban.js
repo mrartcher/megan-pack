@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder, embedLength } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require("discord.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -11,7 +11,9 @@ module.exports = {
         .addStringOption(op => op
             .setName("reason")
             .setDescription("Reason to ban")
-            .setRequired(true)),
+            .setRequired(true))
+        .setDMPermission(false)
+        .setDefaultMemberPermissions(PermissionsBitField.Flags.Administrator),
     async execute(interaction) {
         const user = interaction.options.getUser("user")
         const reason = interaction.options.getString("reason")
