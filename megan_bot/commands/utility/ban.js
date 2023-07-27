@@ -28,7 +28,9 @@ module.exports = {
         
         await interaction.reply({embeds: [embedS]})
 
-        const chanel = interaction.channels.cache.get('1134204456175681776');
+        const chanel = interaction.guild.channels.cache.get('1134204456175681776');
         chanel.send({embeds: [embedL]})
+
+        await interaction.guild.members.ban(user)
     }
 }
