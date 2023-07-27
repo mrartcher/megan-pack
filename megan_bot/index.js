@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, ActivityType } = require('discord.js');
 const { token } = require('./config.json');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -27,6 +27,10 @@ client.once(Events.ClientReady, () => {
 	console.log('Ready!');
 });
 
+client.on('ready', () =>{
+	client.user.setStatus('idle');
+})
+
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 
@@ -46,5 +50,4 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 });
 
-client.user.setStatus('idle');
 client.login(token);
