@@ -2,8 +2,8 @@ const { SlashCommandBuilder, EmbedBuilder, embedLength } = require("discord.js")
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("ban")
-        .setDescription("Ban member")
+        .setName("unban")
+        .setDescription("Unban member")
         .addUserOption(op => op
             .setName("user")
             .setDescription("User to ban")
