@@ -9,7 +9,7 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setTitle("Pong!")
             .setDescription(`Ping: ${interaction.client.ws.ping}`)
-            .setColor(0xfff)
+            .setColor(0x611508)
 
         await interaction.reply({embeds: [embed]})
     }
