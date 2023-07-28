@@ -5,7 +5,7 @@ module.exports = {
         .setDescription("Unmute the member")
         .addUserOption(op => op
             .setName("user")
-            .setDescription("User to mute")
+            .setDescription("User to un mute")
             .setRequired(true))
         .setDefaultMemberPermissions(PermissionsBitField.Flags.Administrator)
         .setDMPermission(false),
