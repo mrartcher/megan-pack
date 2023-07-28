@@ -10,6 +10,7 @@ module.exports = {
         const chanell = interaction.guild.channels.cache.get('1134408862494109728');
 
         const embed = new EmbedBuilder()
+            .setColor(0x611508)
             .setTitle("Топовый гриферский сервер")
             .setDescription("DarkGrief - сервер гриферского выжывания с отзывчивой администрацией")
             .addFields(
