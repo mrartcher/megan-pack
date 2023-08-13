@@ -50,61 +50,6 @@ client.on(Events.InteractionCreate, async interaction => {
 			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 		}
 	}
-
-	if (interaction.commandName === "rek") {
-
-		const modal = new ModalBuilder()
-			.setTitle("Create reklama")
-			.setCustomId('rek-modal')
-
-		const titleInput = new TextInputBuilder()
-			.setCustomId("titleInput")
-			.setLabel("Print title")
-			.setPlaceholder("Enter the title...")
-			.setStyle(TextInputStyle.Short)
-			.setMinLength(10)
-			.setRequired(true)
-
-		const bodyInput = new TextInputBuilder()
-			.setCustomId("bodyInput")
-			.setLabel("Print body text")
-			.setPlaceholder("Enter the text...")
-			.setStyle(TextInputStyle.Paragraph)
-			.setMinLength(10)
-			.setRequired(true)
-
-		const urlInput = new TextInputBuilder()
-			.setCustomId("urlInput")
-			.setLabel("Enter url")
-			.setPlaceholder("Enter the text...")
-			.setStyle(TextInputStyle.Short)
-			.setMinLength(3)
-			.setRequired(true)
-
-		const rows = new ActionRowBuilder().addComponents(titleInput, bodyInput, urlInput)
-
-		modal.addComponents(rows)
-
-		await interaction.showModal(modal)
-	}
-
-	if (interaction.customId === "rek-modal") {
-
-		const body = interaction.fields.getTextInputValue("bodyInput")
-		const title = interaction.fields.getTextInputValue("titleInput")
-		const url = interaction.fields.getTextInputValue("urlInput")
-		const channel = interaction.guild.channels.cache.get('1134408862494109728');
-
-		const embed = new EmbedBuilder()
-			.setColor(0x611508)
-			.setTitle(title)
-			.setDescription(body)
-			.addFields(
-				{name: "Ссылка", value: url}
-			)
-
-		channel.send({embeds: [embed]})
-	}
 });
 
 client.login(token);
