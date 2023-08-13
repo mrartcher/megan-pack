@@ -4,7 +4,7 @@ const {SlashCommandBuilder,
     ModalBuilder,
     TextInputBuilder,
     TextInputStyle,
-    ActionRowBuilder, time
+    ActionRowBuilder,
 } = require("discord.js");
 module.exports = {
     data: new SlashCommandBuilder()
@@ -14,9 +14,9 @@ module.exports = {
         .setDMPermission(false),
     async execute(interaction) {
 
-        const modal = new ModalBuilder()
+        const messageModal = new ModalBuilder()
             .setTitle('Create message')
-            .setCustomId('meganMessageModal')
+            .setCustomId('msdModal')
 
         const titleInput = new TextInputBuilder()
             .setCustomId("titleInput")
@@ -42,20 +42,20 @@ module.exports = {
             .setMinLength(3)
             .setRequired(true)
 
-        const row1 = new ActionRowBuilder().addComponents(titleInput)
-        const row2 = new ActionRowBuilder().addComponents(bodyInput)
-        const row3 = new ActionRowBuilder().addComponents(urlInput)
+        const row = new ActionRowBuilder().addComponents(titleInput)
+        const row1 = new ActionRowBuilder().addComponents(bodyInput)
+        const row2 = new ActionRowBuilder().addComponents(urlInput)
 
-        modal.addComponents(row1, row2, row3)
+        messageModal.addComponents(row, row1, row2)
 
-        await interaction.showModal(modal)
+        await interaction.showModal(messageModal)
 
-        const filter = (interaction) => interaction.customId === 'meganMessageModal'
+        const filter = (interaction) => interaction.customId === 'msdModal'
 
         await interaction.awaitModalSubmit({filter, time: 30_000})
             .then((modalInteraction) => {
-                const body = modalInteraction.fields.getTextInputValue("bodyInput")
                 const title = modalInteraction.fields.getTextInputValue("titleInput")
+                const body = modalInteraction.fields.getTextInputValue("bodyInput")
                 const url = modalInteraction.fields.getTextInputValue("urlInput")
                 const channel = modalInteraction.guild.channels.cache.get('1140187214320521317');
 
@@ -69,7 +69,7 @@ module.exports = {
 
                 channel.send({embeds: [embed]})
 
-                // modalInteraction.reply({content: "Modal success submitted", ephemeral: true})
+                modalInteraction.reply({content: "Modal success submitted", ephemeral: true})
 
                 console.log("Modal submitted")
                 // console.log("UP")
