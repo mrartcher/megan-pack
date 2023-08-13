@@ -57,7 +57,7 @@ module.exports = {
                 const body = modalInteraction.fields.getTextInputValue("bodyInput")
                 const title = modalInteraction.fields.getTextInputValue("titleInput")
                 const url = modalInteraction.fields.getTextInputValue("urlInput")
-                const channel = modalInteraction.guild.channels.cache.get('1134408862494109728');
+                const channel = modalInteraction.guild.channels.cache.get('1140187214320521317');
 
                 const embed = new EmbedBuilder()
                     .setColor(0x611508)
