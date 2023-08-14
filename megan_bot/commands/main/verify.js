@@ -59,7 +59,7 @@ module.exports = {
                             if (!member.roles.cache.some(role => role.id === '1130828643837427722')) {
                                 const embed = new EmbedBuilder()
                                     .setTitle("Успешная верификация")
-                                    .setDescription(`${user}, ти успешно прошел проверку!`)
+                                    .setDescription(`${user}, ты успешно прошел проверку!`)
                                     .setColor(0x611508)
 
                                 md.reply({embeds: [embed], ephemeral: true})
@@ -68,7 +68,7 @@ module.exports = {
                             } else {
                                 const embed = new EmbedBuilder()
                                     .setTitle("Не удалось верифицировать")
-                                    .setDescription(`${user}, у тебя уже есть ета роль.`)
+                                    .setDescription(`${user}, у тебя уже есть эта роль.`)
                                     .setColor(0x611508)
 
                                 md.reply({embeds: [embed], ephemeral: true})
@@ -76,7 +76,7 @@ module.exports = {
                         } else {
                             const embed = new EmbedBuilder()
                                 .setTitle("Вы не прошли верификацию")
-                                .setDescription(`${user}, ти не успешно прошел проверку!`)
+                                .setDescription(`${user}, ты не успешно прошел проверку!`)
                                 .setColor(0x611508)
 
                             md.reply({embeds: [embed], ephemeral: true})
