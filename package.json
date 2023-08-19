@@ -5,6 +5,6 @@
     "nodemon": ""
   },
   "scripts": {
-    "start": "nodemon megan_bot/index.js"
+    "dev": "nodemon megan_bot/index.js"
   }
 }
